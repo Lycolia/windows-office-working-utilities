@@ -16,12 +16,13 @@
 
 | パス                   | 内容                                                                              |
 | ---------------------- | --------------------------------------------------------------------------------- |
-| log                    | 日報置き場。デスクトップとかに置いとく                                            |
-| log/.vscode            | 日報をMarkdownで書く時のVSCodeの便利設定                                          |
-| log/lib                | 日報集計用のモジュール                                                            |
-| log/.prettierrc        | 日報をMarkdownで書く時のPrettierの便利設定                                        |
-| log/daily.sh           | 日々の日報ファイルを生成するやつ                                                  |
-| log/timesheet.pl       | 日報ファイルのTLセクションから作業を集計し、人時を出すやつ                        |
+| wk/log                 | 作業場。デスクトップとかに置いとく                                                |
+| wk/log                 | 日報置き場                                                                        |
+| wk/.vscode             | 日報をMarkdownで書く時のVSCodeの便利設定                                          |
+| wk/lib                 | Perlのユーティリティモジュール                                                    |
+| wk/.prettierrc         | 日報をMarkdownで書く時のPrettierの便利設定                                        |
+| wk/daily.sh            | 日々の日報ファイルを生成するやつ                                                  |
+| wk/timesheet.pl        | 日報ファイルのTLセクションから作業を集計し、人時を出すやつ                        |
 | README.md              | このファイル                                                                      |
 | restart.bat            | Windowsを再起動したときに蹴るやつ。WSLのサービス再起動とかVPN再接続などを呼ぶ想定 |
 | run_zsh.cmd            | MSYS2のzshをWindows側から呼ぶときのユーティリティ                                 |
@@ -31,7 +32,7 @@
 ## 使い方
 
 1. `run_zsh.cmd`をMSYS2のインストールルートパスに置く
-2. `log`フォルダをデスクトップ辺りに配置し、`start-wsl-services.bat`の`"/C/path/to/daily.sh"`のパスを直す
+2. `wk`フォルダをデスクトップ辺りに配置し、`start-wsl-services.bat`の`"/C/path/to/daily.sh"`のパスを直す
 3. バッチ類を適当な場所に配置し、`startup.bat`のショートカットを`shell:startup`に貼っておくと起動時に日報作成やWSLのサービス起動が出来るようになる
 4. スリープや休止から復帰するとWSLのサービスが死んでいるので`restart.bat`を蹴って叩き起こすとよい
 
