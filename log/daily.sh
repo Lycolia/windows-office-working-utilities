@@ -21,17 +21,12 @@ createDailyFile() {
   cat << EOF > ${destPath}/log.md
 # ${title}
 
-## 昨日やったこと
-
 ## 今日やること
 
 ## 朝会メモ
 
 ## TL
 
-## メモ
-
-## 明日やること
 EOF
 }
 
