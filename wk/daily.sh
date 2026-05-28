@@ -23,11 +23,12 @@ createDailyFile() {
 
 ## 今日やること
 
-## 朝会メモ
-
 ## TL
 
 EOF
+
+  touch ${destPath}/朝会メモ.md
+
 }
 
 thisWeekOfMonth() {
