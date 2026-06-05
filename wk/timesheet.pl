@@ -37,6 +37,7 @@ use strict;
 use warnings;
 use utf8;
 use open qw(:std :encoding(UTF-8));
+use Encoding;
 use FindBin qw($Bin);
 use POSIX qw(strftime mktime);
 use Time::Piece;
@@ -46,6 +47,13 @@ use TLParse;
 my $argv = shift @ARGV
     or die "usage: $0 <log.md>\n";
 my $path = create_path($argv);
+
+unless (-f $path) {
+    print "ファイルが見つかりませんでした：\n";
+    print Encode::decode('UTF-8', $path), "\n";
+
+    die;
+}
 
 my $entries = TLParse::parse_file($path);
 
@@ -94,17 +102,13 @@ sub create_path {
     if ($param =~ /^(\d{1,2})$/) {
         my $path = create_dir_path(undef, undef, $1);
         return "${path}/log.md";
-    } elsif ($param =~ /^(\d{2}).*(\d{2})$/) {
+    } elsif ($param =~ /^(\d{2})(\d{2})$/) {
         my $path = create_dir_path(undef, $1, $2);
         return "${path}/log.md";
-    } elsif ($param =~ /^(\d{4}).*(\d{2}).*(\d{2})$/) {
+    } elsif ($param =~ /^(\d{4})(\d{2})(\d{2})$/) {
         my $path = create_dir_path($1, $2, $3);
         return "${path}/log.md";
     } else {
-        if (-f $param) {
-            return $param;
-        } else {
-            die '引数がおかしい\n';
-        }
+        return $param;
     }
 }
