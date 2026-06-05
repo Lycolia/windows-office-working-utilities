@@ -75,7 +75,7 @@ sub create_dir_path {
     my $t = localtime;
     my $year = shift // $t->year;
     my $month = shift // $t->mon;
-    my $day = shift // $t->day;
+    my $day = shift // $t->mday;
 
     my $epoch_target_month_first_day = mktime(0, 0, 0, 1, $month - 1, $year - 1900);
     my $epoch_target_day = mktime(0, 0, 0, $day, $month - 1, $year - 1900);
