@@ -44,8 +44,7 @@ use Time::Piece;
 use lib "$Bin/lib";
 use TLParse;
 
-my $argv = shift @ARGV
-    or die "usage: $0 <log.md>\n";
+my $argv = shift @ARGV;
 my $path = create_path($argv);
 
 unless (-f $path) {
@@ -78,8 +77,6 @@ sub create_dir_path {
     my $month = shift // $t->mon;
     my $day = shift // $t->day;
 
-    my @now = localtime;
-
     my $epoch_target_month_first_day = mktime(0, 0, 0, 1, $month - 1, $year - 1900);
     my $epoch_target_day = mktime(0, 0, 0, $day, $month - 1, $year - 1900);
 
@@ -92,7 +89,6 @@ sub create_dir_path {
 
 sub create_path {
     my $param = shift;
-    my $base_path = 'log';
 
     unless (defined $param) {
         my $path = create_dir_path(undef, undef, undef);
